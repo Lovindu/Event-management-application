@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Nav from "../components/Nav.jsx";
 
-function Home() {
+const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <Nav />
+      home
+    </div>
   )
 }
 
