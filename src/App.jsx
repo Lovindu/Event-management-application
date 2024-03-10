@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Events from './pages/Events'
 import Schedule from './pages/Schedule'
 import Contact from './pages/Contact'
+import Search from './pages/Search';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/events' element={<Events />}/>
+          <Route path='/search' element={<Search />} />
           <Route path='/schedule' element={<Schedule />} />
           <Route path='/contactus' element={<Contact />}/>
         </Routes>

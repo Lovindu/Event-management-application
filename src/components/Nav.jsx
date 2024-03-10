@@ -43,6 +43,7 @@ function Nav() {
         </div>
         <div className='navbar-row2'>
             <a><Link to="/">Home</Link></a>
+            <a><Link to="/search">Search</Link></a>
             <a><Link to="/events">Events</Link></a>
             <a><Link to="/schedule">Schedule</Link></a>
             <a><Link to="/contactus">Contact Us</Link></a>

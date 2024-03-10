@@ -1,0 +1,17 @@
+.home--musical {
+    margin-left: 20px;
+}
+
+.home--musical-cards {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; 
+}
+
+.home--musical-cards::-webkit-scrollbar {
+    display: none;
+}
