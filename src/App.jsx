@@ -5,6 +5,9 @@ import Events from './pages/Events'
 import Schedule from './pages/Schedule'
 import Contact from './pages/Contact'
 import Search from './pages/Search';
+import Event from './pages/Event';
+import TicketSelection from './components/TicketSelection';
+import TicketConfimation from './components/TicketConfirmation';
 
 function App() {
 
@@ -17,6 +20,9 @@ function App() {
           <Route path='/search' element={<Search />} />
           <Route path='/schedule' element={<Schedule />} />
           <Route path='/contactus' element={<Contact />}/>
+          <Route path='/event' element={<Event />}/>
+          <Route path='/ticketselection' element={<TicketSelection />} />
+          <Route path='/ticketconfirmation' element={<TicketConfimation />}/>
         </Routes>
       </Router>
     </>

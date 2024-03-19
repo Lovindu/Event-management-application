@@ -1,8 +1,8 @@
-.home--musical {
-    margin-left: 20px;
+.home--cards-row {
+    margin-left: 40px;
 }
 
-.home--musical-cards {
+.home--cards {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -12,6 +12,6 @@
     scrollbar-width: none; /* firefox */
 }
 
-.home--musical-cards::-webkit-scrollbar {
+.home--cards::-webkit-scrollbar {
     display: none;
 }

@@ -3,18 +3,18 @@ import './EventCard.css';
 import img from '../assets/cover.png';
 import star from '../assets/Star.png';
 
-const EventCard = () => {
+const EventCard = ({date, month, rating, image, title, location}) => {
   return (
     <div className='eventcard'>
         <div className='eventcard--main'>
 
           <div className='eventcard--main-details'>
             <div className='eventcard--main-date'>
-                29 <br /> Feb
+                {date} <br /> {month}
               </div>
 
               <div className='eventcard--main-rating'>
-                <span>4.8</span>
+                <span>{rating}</span>
                 <img src={star} alt="ratings-icon" />
               </div>
           </div>
@@ -22,8 +22,8 @@ const EventCard = () => {
             <img className='eventcard--poster' src={img} alt="event-poster" />
         </div>
 
-        <h3>Title</h3>
-        <p>Location</p>
+        <h3>{title}</h3>
+        <p>{location}</p>
     </div>
   )
 }
