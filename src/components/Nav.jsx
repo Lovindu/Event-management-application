@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import searchIcon from '../assets/search.png';
 import searchClear from '../assets/searchClear.png';
 import logo from '../assets/LOGO.png';
+import user from '../assets/user.png';
 
 function Nav() {
     const [search, setSearch] = useState('');
-    
+    const [session, setSession] = useState(true);
+    const [username, setUsername] = useState("jonny");
+
     const handleChange = (event) => {
         setSearch(event.target.value)
     }
@@ -34,11 +37,19 @@ function Nav() {
                     
                 {search ? <img src={searchClear} alt="clear btn" className='nav-search-clear'onClick={clearSearch}/> : <></>}
             </div>
-
-            <div className='navbar-buttons'>
-                <button className='nav-btn'>Login</button>
-                <button className='nav-round-btn'>Sign in</button>
-            </div>
+            {session ? 
+                    <Link to="/profile" style={{ textDecoration: 'none' }}>
+                        <div className='user-logged-in'>
+                            <img src={user} alt="usericon" />
+                            <p>Welcome, {username} !</p>
+                        </div> 
+                    </Link>
+                :
+                <div className='navbar-buttons'>
+                    <Link to='/login'><button className='nav-btn'>Login</button></Link>
+                    <Link to='/signin'><button className='nav-round-btn'>Sign in</button></Link>
+                </div>
+            }
             
         </div>
         <div className='navbar-row2'>

@@ -1,13 +1,16 @@
-import './App.css'
+import './App.css';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Home from './pages/Home'
-import Events from './pages/Events'
-import Schedule from './pages/Schedule'
-import Contact from './pages/Contact'
+import Home from './pages/Home';
+import Events from './pages/Events';
+import Schedule from './pages/Schedule';
+import Contact from './pages/Contact';
 import Search from './pages/Search';
 import Event from './pages/Event';
 import TicketSelection from './components/TicketSelection';
 import TicketConfimation from './components/TicketConfirmation';
+import Login from './pages/Login';
+import SignIn from './pages/SignIn';
+import Profile from './pages/Profile';
 
 function App() {
 
@@ -23,6 +26,9 @@ function App() {
           <Route path='/event' element={<Event />}/>
           <Route path='/ticketselection' element={<TicketSelection />} />
           <Route path='/ticketconfirmation' element={<TicketConfimation />}/>
+          <Route path='/login' element={<Login />} />
+          <Route path='/signin' element={<SignIn />}/>
+          <Route path='/profile' element={<Profile />} />
         </Routes>
       </Router>
     </>
