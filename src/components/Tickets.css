@@ -88,6 +88,7 @@
     align-items: flex-start;
     justify-content: space-evenly;
     margin-top: 20px;
+    flex-direction: row-reverse;
 }
 
 .ticket-confirmation-left {
@@ -122,4 +123,16 @@
     display: flex;
     justify-content: space-between;
     
+}
+
+.ticket-confirmation-left-main button{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--pink);
+    color: white;
+    height: 30px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
 }

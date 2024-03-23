@@ -7,30 +7,34 @@ const TicketConfirmation = () => {
         <Nav />
         <div className='ticket-confirmation'>
 
-            <div className='ticket-confirmation-left'>
-                <div className='ticket-c-left-top'>
-                    <h3>Event name</h3>
-                    <p>Date</p>
-                    <p>Venue</p>
-                    <p>time</p>
-                </div>
-                
-                <div className='ticket-c-left-price'>
-                    <div>
-                        <p>Ticket Type x 1</p>
-                        <p className='ticket-c-bold'>Rs.2000</p>
+            <div className='ticket-confirmation-left-main'>
+                <div className='ticket-confirmation-left'>
+                    <div className='ticket-c-left-top'>
+                        <h3>Event name</h3>
+                        <p>Date</p>
+                        <p>Venue</p>
+                        <p>time</p>
+                    </div>
+                    
+                    <div className='ticket-c-left-price'>
+                        <div>
+                            <p>Ticket Type x 1</p>
+                            <p className='ticket-c-bold'>Rs.2000</p>
+                        </div>
+
+                        <div>
+                            <p>Booking fee</p>
+                            <p className='ticket-c-bold'>Rs.0</p>
+                        </div>
                     </div>
 
                     <div>
-                        <p>Booking fee</p>
-                        <p className='ticket-c-bold'>Rs.0</p>
+                        <h3>Total</h3>
+                        <h3>Rs.2000</h3>
                     </div>
-                </div>
+            </div>
 
-                <div>
-                    <h3>Total</h3>
-                    <h3>Rs.2000</h3>
-                </div>
+                <button>Proceed to Pay</button>
             </div>
 
             <div className='ticket-confirmation-right'>

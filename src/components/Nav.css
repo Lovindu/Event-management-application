@@ -91,6 +91,22 @@
     transition: 0.2s ease-in;
 }
 
+.user-logged-in {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.user-logged-in img{
+    height: 45px;
+    margin: 0px 10px 0px 10px;
+}
+
+.user-logged-in p {
+    font-weight: 600;
+    color: var(--dark-grey);
+}
+
 @media screen and (max-width: 600px) {
     .navbar-search {
         margin-left: 0px;
