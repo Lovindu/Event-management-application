@@ -1,0 +1,84 @@
+
+.container{
+  display: flex;
+  margin-top: 4rem;
+  
+    
+}
+.home-cards-right{
+    margin-left: 1rem;
+}
+.filters-left {
+    flex: 0 0 19%; 
+    margin-left: 1rem;
+    
+    
+}
+.filters-left label{
+    color:#4B38AC;
+}
+.filters-left h2{
+font-weight: 500;
+}
+.date-filter,
+.price-filter{
+    display: flex;
+    flex-direction: column;
+    background-color: #F4F4F4;
+    margin-bottom: 10%;
+    border-radius: 10px;
+    padding-left: 1.5em ;
+    padding-bottom: 1em;
+   
+
+}
+.filters-left button{
+   background: none;
+   border: none;
+   color:#FC8E94;
+   font-size: 1em;
+   cursor: pointer;
+}
+
+/* Square radio button--------------------*/
+.filters-left{
+    
+input[type='radio'] {
+    appearance: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    outline: none;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  /* Square radio buttons - checked state */
+  input[type='radio']:checked {
+    background-color: #4B38AC;
+  }
+  
+}
+
+
+.home--cards-row {
+    margin-left: 10px;
+}
+
+.home--cards {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; /* firefox */
+    margin-bottom: 1rem
+}
+
+.home--cards::-webkit-scrollbar {
+    display: none;
+}
