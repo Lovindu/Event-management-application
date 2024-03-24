@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Nav.css";
 import { Link } from 'react-router-dom';
 import searchIcon from '../assets/search.png';
@@ -8,8 +8,8 @@ import user from '../assets/user.png';
 
 function Nav() {
     const [search, setSearch] = useState('');
-    const [session, setSession] = useState(true);
-    const [username, setUsername] = useState("jonny");
+    const [session, setSession] = useState(false);
+    const [username, setUsername] = useState("");
 
     const handleChange = (event) => {
         setSearch(event.target.value)
@@ -18,6 +18,16 @@ function Nav() {
     const clearSearch = () => {
         setSearch('')
     }
+
+    useEffect(() => {
+        if(sessionStorage.email) {
+            setSession(true);
+            setUsername((sessionStorage.email.toString().substring(0, 7))+ "....");
+        } else {
+            setSession(false);
+            setUsername("");
+        }
+    }, [sessionStorage])
 
   return (
     <div className='navbar'>
@@ -55,7 +65,6 @@ function Nav() {
         <div className='navbar-row2'>
             <a><Link to="/">Home</Link></a>
             <a><Link to="/search">Search</Link></a>
-            <a><Link to="/events">Events</Link></a>
             <a><Link to="/schedule">Schedule</Link></a>
             <a><Link to="/contactus">Contact Us</Link></a>
         </div>

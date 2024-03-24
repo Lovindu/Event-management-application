@@ -3,9 +3,9 @@ import './EventCard.css';
 import img from '../assets/cover.png';
 import star from '../assets/Star.png';
 
-const EventCard = ({date, month, rating, image, title, location}) => {
+const EventCard = ({date, month, rating, image, title, location, click}) => {
   return (
-    <div className='eventcard'>
+    <div className='eventcard' onClick={click}>
         <div className='eventcard--main'>
 
           <div className='eventcard--main-details'>
