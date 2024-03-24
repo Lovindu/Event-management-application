@@ -2,14 +2,16 @@ import React from 'react';
 import './EventCard.css';
 import img from '../assets/cover.png';
 import star from '../assets/Star.png';
+import PropTypes from 'prop-types';
 
 const EventCard = ({date, month, rating, image, title, location, click}) => {
   return (
     <div className='eventcard' onClick={click}>
+
         <div className='eventcard--main'>
 
-          <div className='eventcard--main-details'>
-            <div className='eventcard--main-date'>
+          <div className='eventcard--main-details' style={{ paddingLeft: mainDetailsPadding }}>
+            <div className='eventcard--main-date' style={{ display: mainDateDisplay }}>
                 {date} <br /> {month}
               </div>
 
@@ -25,7 +27,12 @@ const EventCard = ({date, month, rating, image, title, location, click}) => {
         <h3>{title}</h3>
         <p>{location}</p>
     </div>
+   
   )
 }
+EventCard.propTypes = {
+  mainDateDisplay: PropTypes.string.isRequired,
+  mainDetailsPadding:PropTypes.string.isRequired,
+};
 
 export default EventCard
