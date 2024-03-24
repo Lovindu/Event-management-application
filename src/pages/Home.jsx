@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
 import Nav from "../components/Nav.jsx";
 import ImageSlider from '../components/ImageSlider.jsx';
 import EventCard from '../components/EventCard.jsx';
 import Footer from '../components/Footer.jsx';
+import { getDocs, collection } from 'firebase/firestore';
+import { db } from '../firebaseConfig.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [slides, setSlides] = useState([
     {url: "https://mytickets.lk/contents/events/poster/Aluth%20kalawak%20event%20banner.jpg", header: "bravo"},
     {url: "https://pbs.twimg.com/media/DbE6yNvUwAAVucH.jpg:large", header: "bravo"},
   ]);
+
+  const [events, setEvents] = useState([]);
 
   const [cardData, setCardData] = useState([{
     date: "29",
@@ -57,6 +62,32 @@ const Home = () => {
     category: "musical"
   },]);
 
+  const navigate = useNavigate();
+
+  const getEvents = async () => {
+    const querySnapshot = await getDocs(collection(db, "Events"));
+    const uniqueEventData = new Set();
+
+    querySnapshot.forEach((doc) => {
+      uniqueEventData.add({
+        id: doc.id,
+        data: doc.data()
+      })
+    })
+
+    setEvents([...uniqueEventData])
+  }
+
+  const handleNavigate = () => {
+    navigate('/event')
+  }
+
+  console.log(events)
+
+  useEffect(() => {
+    getEvents()
+  }, [])
+
   return (
     <div>
       <Nav />
@@ -65,51 +96,127 @@ const Home = () => {
 
       <div className='home--cards-row'>
         <h1>Musical Events</h1>
-        
         <div className='home--cards'>
-          {cardData.map((item, index) => <EventCard 
-            key={index}
-            date={item.date}
-            month={item.month}
-            rating={item.rating}
-            image={item.img}
-            title={item.Title}
-            location={item.location}
-          />)}
+        {events.map((item) => {
+          if(item.data.Category == "Musical"){
+            return <EventCard 
+              key={item.id}
+              date={item.data.date}
+              rating={""}
+              title={item.data.eventName}
+              location={item.data.locationName}
+              image={item.data.eventPoster}
+              click={handleNavigate}
+            />
+          }
+        })}
         </div>
       </div>
 
-      {/* should include trenting searches or trending events */}
+      <div className='home--cards-row'>
+        <h1>Comedy Shows</h1>
+        <div className='home--cards'>
+        {events.map((item) => {
+          if(item.data.Category == "Comedy show"){
+            return <EventCard 
+              key={item.id}
+              date={item.data.date}
+              rating={""}
+              title={item.data.eventName}
+              image={item.data.eventPoster}
+              location={item.data.locationName}
+            />
+          }
+        })}
+        </div>
+      </div>
+
+      <div className='home--cards-row'>
+        <h1>Workshops</h1>
+        <div className='home--cards'>
+        {events.map((item) => {
+          if(item.data.Category == "Workshop"){
+            return <EventCard 
+              key={item.id}
+              date={item.data.date}
+              rating={""}
+              title={item.data.eventName}
+              image={item.data.eventPoster}
+              location={item.data.locationName}
+            />
+          }
+        })}
+        </div>
+      </div>
 
       <div className='home--cards-row'>
         <h1>Performences</h1>
-        
         <div className='home--cards'>
-          {cardData.map((item, index) => <EventCard 
-            key={index}
-            date={item.date}
-            month={item.month}
-            rating={item.rating}
-            image={item.img}
-            title={item.Title}
-            location={item.location}
-          />)}
+        {events.map((item) => {
+          if(item.data.Category == "Performance"){
+            return <EventCard 
+              key={item.id}
+              date={item.data.date}
+              rating={""}
+              title={item.data.eventName}
+              image={item.data.eventPoster}
+              location={item.data.locationName}
+            />
+          }
+        })}
         </div>
       </div>
 
       <div className='home--cards-row'>
-        <h1>Comedy shows</h1>
-        
+        <h1>Conferences</h1>
         <div className='home--cards'>
-          {cardData.map((item, index) => <EventCard 
-            key={index}
-            date={item.date}
-            month={item.month}
-            rating={item.rating}
-            image={item.img}
-            title={item.Title}
-            location={item.location}
-          />)}
+        {events.map((item) => {
+          if(item.data.Category == "Conferences"){
+            return <EventCard 
+              key={item.id}
+              date={item.data.date}
+              rating={""}
+              title={item.data.eventName}
+              image={item.data.eventPoster}
+              location={item.data.locationName}
+            />
+          }
+        })}
+        </div>
+      </div>
+
+      <div className='home--cards-row'>
+        <h1>Award Shows</h1>
+        <div className='home--cards'>
+        {events.map((item) => {
+          if(item.data.Category == "Award show"){
+            return <EventCard 
+              key={item.id}
+              date={item.data.date}
+              rating={""}
+              title={item.data.eventName}
+              image={item.data.eventPoster}
+              location={item.data.locationName}
+            />
+          }
+        })}
+        </div>
+      </div>
+
+      <div className='home--cards-row'>
+        <h1>Other</h1>
+        <div className='home--cards'>
+        {events.map((item) => {
+          if(item.data.Category == "other"){
+            return <EventCard 
+              key={item.id}
+              date={item.data.date}
+              rating={""}
+              title={item.data.eventName}
+              location={item.data.locationName}
+            />
+          }
+        })}
         </div>
       </div>
 

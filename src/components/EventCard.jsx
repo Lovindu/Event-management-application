@@ -4,12 +4,11 @@ import img from '../assets/cover.png';
 import star from '../assets/Star.png';
 import PropTypes from 'prop-types';
 
-const EventCard = ({date, month, rating, image, title, location,price, mainDateDisplay,mainDetailsPadding}) => {
-  return (
-    
-   
 
-    <div className='eventcard'>
+const EventCard = ({date, month, rating, image, title, location, click, mainDateDisplay, mainDetailsPadding }) => {
+  return (
+    <div className='eventcard' onClick={click}>
+
         <div className='eventcard--main'>
 
           <div className='eventcard--main-details' style={{ paddingLeft: mainDetailsPadding }}>
