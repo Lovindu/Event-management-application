@@ -2,12 +2,49 @@
 .container{
   display: flex;
   margin-top: 4rem;
+  width: 100%;
   
     
 }
+/*search bar---------------*/
+.navbar-search {
+    position: relative;
+    top: 4.3em;
+    align-items: center;
+    flex-wrap: nowrap;
+    border: 1px solid var(--dark-grey);
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 37%;
+    width: 32em;
+    margin-top: 1rem;
+}
 
-.home-cards-right{
+  
+
+.navbar-search input {
+    border: none;
+    outline: none;
+    width: 28em;
+    padding-left: 10px;
+    color: var(--dark-grey);
+}
+
+.nav-search-icon {
+    height: 20px;
+}
+
+.nav-search-clear {
+    height: 15px;
+    cursor: pointer;
+}
+/*search bar end---------------*/
+
+.search-cards-right{
     margin-left: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    
 }
 .filters-left {
     flex: 0 0 19%; 
@@ -65,21 +102,25 @@ input[type='radio'] {
 }
 
 
-.home--cards-row {
+.search--cards-row {
     margin-left: 10px;
-}
-
-.home--cards {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 2rem;
-    overflow-x: auto;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none; /* firefox */
     margin-bottom: 1rem
 }
 
-.home--cards::-webkit-scrollbar {
+.search--cards {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* firefox */
+    margin-bottom: 1rem;
+  
+}
+
+.search-cards-right{
+    width: 100%;
+}
+.search--cards::-webkit-scrollbar {
     display: none;
 }

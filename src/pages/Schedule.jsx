@@ -253,7 +253,7 @@ const Schedule = () => {
     <div>
       <Nav />
       <div className="content">
-        <div className='Schedule--cards-row'>
+        <div className='home--cards-row'>
           <h1>Today</h1>
           <div className='home--cards'>
             {today.map((item, index) => (

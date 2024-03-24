@@ -4,7 +4,7 @@ import img from '../assets/cover.png';
 import star from '../assets/Star.png';
 import PropTypes from 'prop-types';
 
-const EventCard = ({date, month, rating, image, title, location, mainDateDisplay,mainDetailsPadding}) => {
+const EventCard = ({date, month, rating, image, title, location,price, mainDateDisplay,mainDetailsPadding}) => {
   return (
     
    
@@ -28,6 +28,7 @@ const EventCard = ({date, month, rating, image, title, location, mainDateDisplay
 
         <h3>{title}</h3>
         <p>{location}</p>
+        <p>{price}</p>
     </div>
    
   )
