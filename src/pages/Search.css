@@ -9,15 +9,15 @@
 /*search bar---------------*/
 .navbar-search {
     position: relative;
-    top: 4.3em;
+    top: 3.2em;
     align-items: center;
     flex-wrap: nowrap;
     border: 1px solid var(--dark-grey);
     border-radius: 10px;
     padding: 5px;
-    margin-left: 37%;
+    margin-left: 35%;
     width: 32em;
-    margin-top: 1rem;
+  
 }
 
   
@@ -81,7 +81,7 @@ font-weight: 500;
 /* Square radio button--------------------*/
 .filters-left{
     
-input[type='radio'] {
+input[type='checkbox'] {
     appearance: none; 
     -webkit-appearance: none; 
     -moz-appearance: none; 
@@ -95,7 +95,7 @@ input[type='radio'] {
   }
   
   /* Square radio buttons - checked state */
-  input[type='radio']:checked {
+  input[type='checkbox']:checked {
     background-color: #4B38AC;
   }
   
