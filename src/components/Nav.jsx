@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import "./Nav.css";
 import { Link } from 'react-router-dom';
-import searchIcon from '../assets/search.png';
-import searchClear from '../assets/searchClear.png';
+
+
 import logo from '../assets/LOGO.png';
 import user from '../assets/user.png';
 
+
 function Nav() {
+
     const [search, setSearch] = useState('');
     const [session, setSession] = useState(false);
     const [username, setUsername] = useState("");
 
-    const handleChange = (event) => {
-        setSearch(event.target.value)
-    }
-
-    const clearSearch = () => {
-        setSearch('')
-    }
+    
 
     useEffect(() => {
         if(sessionStorage.email) {
@@ -36,17 +32,7 @@ function Nav() {
                 <Link to="/"><img src={logo} alt="logo" className='nav-logo'/></Link>
             </div>
 
-            <div className='navbar-search'>
-                <img src={searchIcon} alt="searchicon" className='nav-search-icon'/>
-                <input 
-                    type="text" 
-                    name='search' 
-                    placeholder='Search' 
-                    onChange={handleChange} 
-                    value={search}/>
-                    
-                {search ? <img src={searchClear} alt="clear btn" className='nav-search-clear'onClick={clearSearch}/> : <></>}
-            </div>
+           
             {session ? 
                     <Link to="/profile" style={{ textDecoration: 'none' }}>
                         <div className='user-logged-in'>
@@ -63,6 +49,7 @@ function Nav() {
             
         </div>
         <div className='navbar-row2'>
+
             <a><Link to="/">Home</Link></a>
             <a><Link to="/search">Search</Link></a>
             <a><Link to="/schedule">Schedule</Link></a>

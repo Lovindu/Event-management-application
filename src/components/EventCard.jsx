@@ -4,6 +4,7 @@ import img from '../assets/cover.png';
 import star from '../assets/Star.png';
 import PropTypes from 'prop-types';
 
+
 const EventCard = ({date, month, rating, image, title, location, click, mainDateDisplay, mainDetailsPadding }) => {
   return (
     <div className='eventcard' onClick={click}>
@@ -26,6 +27,7 @@ const EventCard = ({date, month, rating, image, title, location, click, mainDate
 
         <h3>{title}</h3>
         <p>{location}</p>
+        <p>Rs.{price}</p>
     </div>
    
   )

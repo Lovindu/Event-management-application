@@ -16,6 +16,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
 }
 
 .nav-btn {
@@ -47,32 +48,7 @@
     transition: 0.2s ease-out;
 }
 
-.navbar-search {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    border: 1px solid var(--dark-grey);
-    border-radius: 10px;
-    padding: 5px;
-    margin-left: 100px;
-}
 
-.navbar-search input {
-    border: none;
-    outline: none;
-    width: 400px;
-    padding-left: 10px;
-    color: var(--dark-grey);
-}
-
-.nav-search-icon {
-    height: 20px;
-}
-
-.nav-search-clear {
-    height: 15px;
-    cursor: pointer;
-}
 
 .navbar-row2 {
     display: flex;
