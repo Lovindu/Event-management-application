@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 
 
-const EventCard = ({date, month, rating, image, title, location,price, mainDateDisplay,mainDetailsPadding}) => {
+const EventCard = ({date, month, rating, image, title, location,price, click, mainDateDisplay, mainDetailsPadding }) => {
 
   return (
     <div className='eventcard' >
