@@ -2,26 +2,48 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import google from '../assets/google.png';
-import { firebaseConfig, auth } from '../firebaseConfig';
+import { auth ,provider } from '../firebaseConfig'; 
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
 
-      const user = firebase.auth().currentUser;
-      sessionStorage.setItem('userEmail', email);
-    } catch (error) {
-      setError(error.message);
+    try {
+      const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+      console.log(userCredentials);
+      const user = userCredentials.user;
+      sessionStorage.setItem("email", user.email);
+      navigate('/');
+    } catch (err){
+      setError(err)
+      console.log(error)
     }
+    
   }
 
-  console.log(error)
+  const handleLoginGoogle = (e) => {
+    e.preventDefault();
+  
+      try {
+        signInWithPopup(auth, provider).then((data) => {
+          sessionStorage.setItem("email", data.user.email);
+          sessionStorage.setItem("name", data.user.displayName);
+          navigate('/')
+        })
+        
+      } catch(error) {
+        alert(error)
+      }
+  }
+
 
   return (
     <div className='login-container'>
@@ -48,7 +70,7 @@ const Login = () => {
 
         <br />
 
-        <button className='login-with-google'>Login with Google <img className='login-google' src={google} alt="google logo" /></button>
+        <button className='login-with-google' onClick={handleLoginGoogle}>Login with Google <img className='login-google' src={google} alt="google logo" /></button>
       </div>
     </div>
   )

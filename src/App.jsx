@@ -11,6 +11,8 @@ import TicketConfimation from './components/TicketConfirmation';
 import Login from './pages/Login';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
+import ContactDetails from './pages/ContactDetails';
+import Admin from './pages/Admin';
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signin' element={<SignIn />}/>
           <Route path='/profile' element={<Profile />} />
+          <Route path='/contactDetails' element={<ContactDetails/>} />
+          <Route path='/admin' element={<Admin />} />
         </Routes>
       </Router>
     </>

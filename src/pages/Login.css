@@ -102,3 +102,64 @@
 .show-password input {
     height: 10px;
 }
+
+
+/* contact details page */
+
+.contactDetails {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.contactDetails div {
+    margin: 0 auto;
+    border: 1px solid var(--dark-purple);
+    border-radius: 10px;
+    padding: 10px 50px 50px 50px;
+}
+
+.contactDetails div h1 {
+    margin: 0;
+}
+
+.contactDetails div input {
+    width: 100%;
+    outline: none;
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid var(--light-purple);
+}
+
+.contactDetails div select {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--light-purple);
+}
+
+.contactDetails div button {
+    margin-top: 20px;
+    width: 100%;
+    color: white;
+    background-color: var(--pink);
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.back-btn-details {
+    width: 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.back-btn-details img {
+    height: 30px;
+    transform: rotate(180deg);
+    margin-top: 5px;
+}

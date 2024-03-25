@@ -79,8 +79,6 @@ font-weight: 500;
 }
 
 /* Square radio button--------------------*/
-.filters-left{
-    
 input[type='checkbox'] {
     appearance: none; 
     -webkit-appearance: none; 
@@ -99,7 +97,7 @@ input[type='checkbox'] {
     background-color: #4B38AC;
   }
   
-}
+
 
 
 .search--cards-row {

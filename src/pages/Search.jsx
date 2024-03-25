@@ -7,13 +7,13 @@ import searchClear from '../assets/searchClear.png';
 import { db } from '../firebaseConfig';
 import { getDocs, collection } from 'firebase/firestore';
 
-
 const Search = () => {
   const [eventList, setEventList] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState('');
   const [selectedCategoryFilters, setSelectedCategoryFilters] = useState([]);
   const [selectedPriceRangeFilters, setSelectedPriceRangeFilters] = useState([]);
+  const [selectedDateFilters, setSelectedDateFilters] = useState([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -32,41 +32,28 @@ const Search = () => {
   useEffect(() => {
     const applyFilters = () => {
       let filteredItems = eventList;
-  
-      console.log("Before category filtering:", filteredItems);
-  
+
       if (selectedCategoryFilters.length > 0) {
         filteredItems = filteredItems.filter((item) => selectedCategoryFilters.includes(item.Category));
       }
-  
-      console.log("After category filtering:", filteredItems);
-  
+
       if (selectedPriceRangeFilters.length > 0) {
         filteredItems = filteredItems.filter((item) => {
-          // Debugging statements within the filter function
-          console.log("Item price:", item.price);
           return selectedPriceRangeFilters.some(({ minPrice, maxPrice }) => {
-            console.log("Min price:", minPrice, "Max price:", maxPrice);
             return item.price >= minPrice && item.price <= maxPrice;
           });
         });
       }
       
-      console.log("After price range filtering:", filteredItems);
-  
-      // Filter by search query
       filteredItems = filteredItems.filter(item =>
         item.eventName.toLowerCase().includes(search.toLowerCase())
       );
-  
-      console.log("After search filtering:", filteredItems);
-  
+
       setFilteredData(filteredItems);
     };
   
     applyFilters();
   }, [selectedCategoryFilters, selectedPriceRangeFilters, eventList, search]);
-  
 
   const handleCategoryFilterClick = (category) => {
     const newSelectedCategoryFilters = selectedCategoryFilters.includes(category)
@@ -77,7 +64,7 @@ const Search = () => {
 
   const handlePriceRangeFilterClick = (selectedPriceRange) => {
     let minPrice, maxPrice;
-  
+    
     if (selectedPriceRange === "Rs.0 - Rs.1000") {
       minPrice = 0;
       maxPrice = 1000;
@@ -86,16 +73,36 @@ const Search = () => {
       maxPrice = 5000;
     } else if (selectedPriceRange === "Above 5000") {
       minPrice = 5000;
-      maxPrice = 20000; // Represents no upper limit
+      maxPrice = 20000; 
     } else {
       console.error("Invalid price range format");
-      return; // Exit function early if the price range format is invalid
+      return;
     }
   
-    const newSelectedPriceRangeFilters = selectedPriceRangeFilters.includes(selectedPriceRange)
-      ? selectedPriceRangeFilters.filter((item) => item !== selectedPriceRange)
-      : [...selectedPriceRangeFilters, { minPrice, maxPrice }];
-    setSelectedPriceRangeFilters(newSelectedPriceRangeFilters);
+    const isFilterSelected = selectedPriceRangeFilters.some(
+      filter => filter.minPrice === minPrice && filter.maxPrice === maxPrice
+    );
+  
+    if (isFilterSelected) {
+      // If the filter is already selected, remove it
+      const newSelectedPriceRangeFilters = selectedPriceRangeFilters.filter(
+        filter => !(filter.minPrice === minPrice && filter.maxPrice === maxPrice)
+      );
+      setSelectedPriceRangeFilters(newSelectedPriceRangeFilters);
+    } else {
+      // If the filter is not selected, add it
+      const newSelectedPriceRangeFilters = [...selectedPriceRangeFilters, { minPrice, maxPrice }];
+      setSelectedPriceRangeFilters(newSelectedPriceRangeFilters);
+    }
+  
+  
+   
+  };
+  const handleDateFilterClick = (date) => {
+    const newSelectedDateFilters = selectedDateFilters.includes(date)
+      ? selectedDateFilters.filter((item) => item !== date)
+      : [...selectedDateFilters, date];
+    setSelectedDateFilters(newSelectedDateFilters);
   };
   
   const handleSearchChange = (event) => {
@@ -105,6 +112,7 @@ const Search = () => {
   const clearFilters = () => {
     setSelectedCategoryFilters([]);
     setSelectedPriceRangeFilters([]);
+    setSelectedDateFilters([]);
     setSearch('');
   };
 
@@ -146,17 +154,27 @@ const Search = () => {
           <div className="price-filter">
             <h2>Price Range</h2>
             {["Rs.0 - Rs.1000", "Rs.1000 - Rs.5000", "Above 5000"].map((category, index) => (
-              <label key={index}>
-                <input type='checkbox' checked={selectedCategoryFilters.includes(category)} name='price' onChange={() => handlePriceRangeFilterClick(category)} />
-                {category}
-              </label>
-            ))}
+  <label key={index}>
+    <input 
+      type='checkbox' 
+      checked={selectedPriceRangeFilters.some(filter => {
+        if (category === "Rs.0 - Rs.1000" && filter.minPrice === 0 && filter.maxPrice === 1000) return true;
+        if (category === "Rs.1000 - Rs.5000" && filter.minPrice === 1000 && filter.maxPrice === 5000) return true;
+        if (category === "Above 5000" && filter.minPrice === 5000 && filter.maxPrice === 20000) return true;
+        return false;
+      })} 
+      name='price' 
+      onChange={() => handlePriceRangeFilterClick(category)} 
+    />
+    {category}
+  </label>
+))}
           </div>
           <div className="date-filter">
             <h2>Date</h2>
             {["Today", "Tomorrow", "This week", "This month"].map((category, index) => (
               <label key={index}>
-                <input type='checkbox' checked={selectedCategoryFilters.includes(category)} name='date' onClick={() => handleDateFilterClick(category)} />
+                <input type='checkbox' checked={selectedDateFilters.includes(category)} name='date' onClick={() => handleDateFilterClick(category)} />
                 {category}
               </label>
             ))}
