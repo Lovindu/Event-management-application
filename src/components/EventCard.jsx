@@ -27,7 +27,7 @@ const EventCard = ({date, month, rating, image, title, location, click, mainDate
 
         <h3>{title}</h3>
         <p>{location}</p>
-        <p>Rs.{price}</p>
+        <p>Rs. 500</p>
     </div>
    
   )
