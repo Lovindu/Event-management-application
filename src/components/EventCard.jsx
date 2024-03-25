@@ -5,6 +5,7 @@ import star from '../assets/Star.png';
 import PropTypes from 'prop-types';
 
 
+
 const EventCard = ({date, month, rating, image, title, location,price, mainDateDisplay,mainDetailsPadding}) => {
 
   return (

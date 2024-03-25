@@ -9,13 +9,12 @@ import user from '../assets/user.png';
 
 function Nav() {
 
+    const [search, setSearch] = useState('');
+
+
     
     const [session, setSession] = useState(true);
     const [username, setUsername] = useState("jonny");
-
-    // const [search, setSearch] = useState('');
-    // const [session, setSession] = useState(false);
-    // const [username, setUsername] = useState("");
 
 
     
@@ -55,16 +54,12 @@ function Nav() {
         </div>
         <div className='navbar-row2'>
 
+
             <Link to="/">Home</Link>
             <Link to="/search">Search</Link>
             <Link to="/events">Events</Link>
             <Link to="/schedule">Schedule</Link>
             <Link to="/contactus">Contact Us</Link>
-
-            {/* <a><Link to="/">Home</Link></a>
-            <a><Link to="/search">Search</Link></a>
-            <a><Link to="/schedule">Schedule</Link></a>
-            <a><Link to="/contactus">Contact Us</Link></a> */}
 
         </div>
         
