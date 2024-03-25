@@ -32,6 +32,14 @@ function Nav() {
                 <Link to="/"><img src={logo} alt="logo" className='nav-logo'/></Link>
             </div>
 
+            <div className='navbar-row2'>
+
+                <a><Link to="/">Home</Link></a>
+                <a><Link to="/search">Search</Link></a>
+                <a><Link to="/schedule">Schedule</Link></a>
+                <a><Link to="/contactus">Contact Us</Link></a>
+            </div>
+
            
             {session ? 
                     <Link to="/profile" style={{ textDecoration: 'none' }}>
@@ -47,13 +55,6 @@ function Nav() {
                 </div>
             }
             
-        </div>
-        <div className='navbar-row2'>
-
-            <a><Link to="/">Home</Link></a>
-            <a><Link to="/search">Search</Link></a>
-            <a><Link to="/schedule">Schedule</Link></a>
-            <a><Link to="/contactus">Contact Us</Link></a>
         </div>
         
     </div>

@@ -32,7 +32,7 @@ getEventList();
  // Function to get the start and end dates of the current week
  const getCurrentWeekDates = () => {
   const today = new Date();
-  const currentDay = today.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+  const currentDay = today.getDay(); // 0 for Sunday, 1 for Monday, 6 for Saturday
   const diff = today.getDate() - currentDay + (currentDay === 0 ? -6 : 1); // Adjust for Sunday
   const startOfWeek = new Date(today.setDate(diff));
   const endOfWeek = new Date(startOfWeek);
