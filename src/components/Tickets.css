@@ -51,6 +51,12 @@
     height: 15px;    
 }
 
+.select-tickets-count {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .ticket-summery-details {
     margin-top: 20px;
     min-width: 380px;

@@ -6,6 +6,7 @@ import Footer from '../components/Footer.jsx';
 import searchClear from '../assets/searchClear.png';
 import { db } from '../firebaseConfig';
 import { getDocs, collection } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const [eventList, setEventList] = useState([]);
@@ -14,6 +15,11 @@ const Search = () => {
   const [selectedCategoryFilters, setSelectedCategoryFilters] = useState([]);
   const [selectedPriceRangeFilters, setSelectedPriceRangeFilters] = useState([]);
   const [selectedDateFilters, setSelectedDateFilters] = useState([]);
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/event')
+  }
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -194,6 +200,7 @@ const Search = () => {
                   title={item.eventName}
                   location={item.locationName}
                   price={item.price}
+                  click={handleNavigate}
                 />
               </div>
             </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Event.css';
 import Nav from '../components/Nav';
 import background from '../assets/background.png';
@@ -6,8 +6,46 @@ import cover from '../assets/cover.png';
 import Footer from '../components/Footer';
 import amaradewa from '../assets/amaradewa.jpg';
 import TicketSelection from '../components/TicketSelection';
+import { useNavigate } from 'react-router-dom';
+import { getDocs, collection } from 'firebase/firestore';
+import { db } from '../firebaseConfig.jsx';
 
 const Event = () => {
+    const navigate = useNavigate();
+    const [events, setEvents] = useState([]);
+    const [currentEvent, setCurrentEvent] = useState({
+        name: "",
+        venue: "",
+        time: "",
+        about: "",
+        location: "",
+        locationLink: "",
+        banner: "",
+        poster: ""
+    });
+
+    const handleNavigate = () => {
+        navigate('/ticketselection')
+    }
+
+    const getEvents = async () => {
+        const querySnapshot = await getDocs(collection(db, "Events"));
+        const uniqueEventData = new Set();
+    
+        querySnapshot.forEach((doc) => {
+          uniqueEventData.add({
+            id: doc.id,
+            data: doc.data()
+          })
+        })
+    
+        setEvents([...uniqueEventData])
+    }
+
+    useEffect(() => {
+        getEvents();
+    },[])
+
   return (
     <div className='event'>
         <Nav />
@@ -33,7 +71,7 @@ const Event = () => {
                 <p className='event--top-details-2'><span>About event: </span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
             </div>
 
-            <button>BUY TICKETS</button>
+            <button onClick={handleNavigate}>BUY TICKETS</button>
         </div>
 
         <h1>Artists</h1>

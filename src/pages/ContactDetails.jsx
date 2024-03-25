@@ -51,7 +51,7 @@ const ContactDetails = () => {
 
     const cancelSignUp = async () => {
         await signOut(auth);
-        sessionStorage.removeItem("user");
+        sessionStorage.removeItem("email");
         navigate('/');
     }
 

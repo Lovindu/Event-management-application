@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './EventCard.css';
 import img from '../assets/cover.png';
 import star from '../assets/Star.png';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 
-const EventCard = ({date, month, rating, image, title, location, click, mainDateDisplay, mainDetailsPadding }) => {
+const EventCard = ({date, month, rating, image, title, location, click, mainDateDisplay, mainDetailsPadding, eventId }) => {
+  const [id, setID] = useState("");
+
+  const setId = async () => {
+    setID(eventId);
+  }
+
+  useEffect(() => {
+    setId()
+  }, [])
+
   return (
     <div className='eventcard' onClick={click}>
 

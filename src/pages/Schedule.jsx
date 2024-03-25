@@ -4,15 +4,16 @@ import Nav from '../components/Nav';
 import EventCard from '../components/EventCard.jsx';
 import '../components/EventCard.css'
 import Footer from '../components/Footer.jsx';
-
 import { db } from '../firebaseConfig'
 import { getDocs,collection } from 'firebase/firestore'
+import { useNavigate } from 'react-router-dom';
 
 
 const Schedule = () => {
   const[eventList,setEventList]=useState([]);
 
   const eventsCollectionRef=collection(db,"Events");
+  const navigate = useNavigate();
 
 
     const getEventList= async()=>{
@@ -27,6 +28,10 @@ const Schedule = () => {
   }
 };
 getEventList();
+
+  const handleNavigate = () => {
+    navigate('/event')
+  }
 
   
  // Function to get the start and end dates of the current week
@@ -118,6 +123,7 @@ const { today, tomorrow, nextDays } = categorizeEventsByDate();
              mainDateDisplay='none'
              mainDetailsPadding='2.5rem'
              price={item.price}
+             click={handleNavigate}
             />
           ))}
         </div>
@@ -139,6 +145,7 @@ const { today, tomorrow, nextDays } = categorizeEventsByDate();
               mainDateDisplay='none'
               mainDetailsPadding='2.5rem'
               price={item.price}
+              click={handleNavigate}
             />
           ))}
         </div>
@@ -160,6 +167,7 @@ const { today, tomorrow, nextDays } = categorizeEventsByDate();
                 mainDateDisplay='none'
                 mainDetailsPadding='2.5rem'
                 price={item.price}
+                click={handleNavigate}
               />
             ))}
           </div>

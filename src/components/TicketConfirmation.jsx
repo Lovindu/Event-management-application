@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from './Nav';
 
 const TicketConfirmation = () => {
+
   return (
     <div>
         <Nav />

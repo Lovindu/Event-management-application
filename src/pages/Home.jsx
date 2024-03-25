@@ -64,6 +64,17 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const eventCount = (cat) => {
+    let count = 0;
+    for(let i = 0; i < events.length; i++) {
+      if(events[i].data.Category == cat) {
+        count++
+      }
+    }
+
+    return count;
+  }
+
   const getEvents = async () => {
     const querySnapshot = await getDocs(collection(db, "Events"));
     const uniqueEventData = new Set();
@@ -95,12 +106,13 @@ const Home = () => {
       <ImageSlider slides={slides}/>
 
       <div className='home--cards-row'>
-        <h1>Musical Events</h1>
+        {eventCount("Musical") !=0 ? <h1>Musical Events</h1> : <></>}
         <div className='home--cards'>
         {events.map((item) => {
           if(item.data.Category == "Musical"){
             return <EventCard 
               key={item.id}
+              eventId={item.id}
               date={item.data.date}
               rating={""}
               title={item.data.eventName}
@@ -114,12 +126,14 @@ const Home = () => {
       </div>
 
       <div className='home--cards-row'>
-        <h1>Comedy Shows</h1>
+      {eventCount("Comedy show") !=0 ? <h1>Comedy Shows</h1> : <></>}
+        
         <div className='home--cards'>
         {events.map((item) => {
           if(item.data.Category == "Comedy show"){
             return <EventCard 
               key={item.id}
+              eventId={item.id}
               date={item.data.date}
               rating={""}
               title={item.data.eventName}
@@ -132,12 +146,14 @@ const Home = () => {
       </div>
 
       <div className='home--cards-row'>
-        <h1>Workshops</h1>
+      {eventCount("Workshop") !=0 ? <h1>Workshops</h1> : <></>}
+        
         <div className='home--cards'>
         {events.map((item) => {
           if(item.data.Category == "Workshop"){
             return <EventCard 
               key={item.id}
+              eventId={item.id}
               date={item.data.date}
               rating={""}
               title={item.data.eventName}
@@ -150,12 +166,14 @@ const Home = () => {
       </div>
 
       <div className='home--cards-row'>
-        <h1>Performences</h1>
+      {eventCount("Performance") !=0 ? <h1>Performences</h1> : <></>}
+
         <div className='home--cards'>
         {events.map((item) => {
           if(item.data.Category == "Performance"){
             return <EventCard 
               key={item.id}
+              eventId={item.id}
               date={item.data.date}
               rating={""}
               title={item.data.eventName}
@@ -168,12 +186,14 @@ const Home = () => {
       </div>
 
       <div className='home--cards-row'>
-        <h1>Conferences</h1>
+      {eventCount("Conferences") !=0 ? <h1>Conferences</h1> : <></>}
+
         <div className='home--cards'>
         {events.map((item) => {
           if(item.data.Category == "Conferences"){
             return <EventCard 
               key={item.id}
+              eventId={item.id}
               date={item.data.date}
               rating={""}
               title={item.data.eventName}
@@ -186,12 +206,14 @@ const Home = () => {
       </div>
 
       <div className='home--cards-row'>
-        <h1>Award Shows</h1>
+      {eventCount("Award show") !=0 ? <h1>Award Shows</h1> : <></>}
+        
         <div className='home--cards'>
         {events.map((item) => {
           if(item.data.Category == "Award show"){
             return <EventCard 
               key={item.id}
+              eventId={item.id}
               date={item.data.date}
               rating={""}
               title={item.data.eventName}
@@ -204,12 +226,14 @@ const Home = () => {
       </div>
 
       <div className='home--cards-row'>
-        <h1>Other</h1>
+      {eventCount("other") !=0 ? <h1>Other</h1> : <></>}
+
         <div className='home--cards'>
         {events.map((item) => {
           if(item.data.Category == "other"){
             return <EventCard 
               key={item.id}
+              eventId={item.id}
               date={item.data.date}
               rating={""}
               title={item.data.eventName}
